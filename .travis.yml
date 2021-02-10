@@ -4,8 +4,8 @@ services:
 addons:
   postgresql: '9.4'
 before_script:
-- psql -U postgres -c "create user decide22 password 'decide22'"
-- psql -U postgres -c "create database test_decidedb owner decide22"
+- psql -U postgres -c "create user decide password 'decide'"
+- psql -U postgres -c "create database test_decide2 owner decide"
 - psql -U postgres -c "ALTER USER decide CREATEDB"
 language: python
 python:
@@ -17,5 +17,4 @@ install:
 - pip install -r requirements.txt
 script:
 - cd decide
-- cp travis_local_settings.py local_settings.py
 - python ./manage.py test --keepdb
